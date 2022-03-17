@@ -651,7 +651,7 @@ func extractGCodeCommand(movement string) string {
 		block := s.Text()
 		switch block[0] {
 		case 'G', 'M', 'T', 'g', 'm', 't':
-			return block
+			return strings.ToUpper(block)
 		default:
 			continue
 		}
@@ -669,7 +669,7 @@ func scanGCodes(data []byte, atEOF bool) (advance int, token []byte, err error) 
 			return i + width, data[start:i], nil
 		}
 		nextR, nextWidth := utf8.DecodeRune(data[i+1:])
-		if nextR >= 'A' && nextR <= 'Z' || unicode.IsSpace(nextR) {
+		if nextR >= 'A' && nextR <= 'Z' || nextR >= 'a' && nextR <= 'z' || unicode.IsSpace(nextR) {
 			return i + 1 + nextWidth, data[start : i+1], nil
 		}
 	}
