@@ -1,3 +1,6 @@
+//go:build !linux
+// +build !linux
+
 /*
 Copyright 2022 github.com/uc3d (U. Cirello)
 
@@ -14,23 +17,13 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+// Command idiosepius is the minimal 3D Printer server
 package main
 
-type Configuration struct {
-	Printer Printer `ini:"printer"`
-	Wifi    Wifi    `ini:"wifi"`
-}
+import "log"
 
-type Printer struct {
-	Port string `ini:"port"`
-	Rate int    `ini:"rate"`
-}
-
-type Wifi struct {
-	SSID    string `ini:"ssid"`
-	PSK     string `ini:"psk"`
-	Country string `ini:"country"`
-	IP      string `ini:"ip"`
-	Gateway string `ini:"gateway"`
-	DNS     string `ini:"dns"`
+func main() {
+	log.SetPrefix("idiosepius: ")
+	log.SetFlags(0)
+	log.Fatal("idiosepius is supported on linux only")
 }
