@@ -1,5 +1,5 @@
 //go:build linux
-// +build linux darwin
+// +build linux
 
 /*
 Copyright 2022 github.com/uc3d (U. Cirello)
