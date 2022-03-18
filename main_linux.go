@@ -44,6 +44,8 @@ func main() {
 	switch filepath.Base(os.Args[0]) {
 	case "terminal":
 		terminal()
+	case "webcam":
+		webcam()
 	default:
 		print()
 	}
